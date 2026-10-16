@@ -37,7 +37,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/15 pt-6 text-xs text-white/60">
-          © {new Date().getFullYear()} Diani Beach Podcast. All rights reserved.
+          {/* © {new Date().getFullYear()} Diani Beach Podcast. All rights reserved. */}
+          Diani Beach Podcast. All rights reserved.
         </div>
       </Container>
     </footer>
