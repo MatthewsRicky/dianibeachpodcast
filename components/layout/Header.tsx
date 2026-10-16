@@ -7,18 +7,19 @@ const navigation = [
   { href: "/directory", label: "Directory" },
   { href: "/classifieds", label: "Classifieds" },
   { href: "/events", label: "Events" },
+  { href: "/mylivinglist", label: "My Living List" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-paper/95 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-border bg-sand/85 backdrop-blur-md">
       <Container className="flex h-20 items-center justify-between gap-6">
         <Link href="/" className="shrink-0">
           <span className="block text-lg font-bold tracking-tight text-ocean">
-            DIANI BEACH
+            DIANI BEACH PODCAST
           </span>
           <span className="block text-[10px] font-semibold uppercase tracking-[0.28em] text-muted">
-            Podcast & Local Stories
+            Local Stories
           </span>
         </Link>
 
@@ -36,7 +37,7 @@ export function Header() {
 
         <Link
           href="/advertise"
-          className="hidden rounded-full bg-ocean px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-ocean-deep sm:inline-flex"
+          className="hidden rounded-full bg-coral px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-seafoam hover:text-ocean-deep sm:inline-flex"
         >
           Advertise With Us
         </Link>
