@@ -76,3 +76,28 @@ export type Advertisement = {
   endsAt?: string;
   sponsored: true;
 };
+
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string[];
+  publishedAt: string;
+  categories: string[];
+  author: string;
+  sourceUrl: string;
+  featured?: boolean;
+  image?: string;
+};
+
+export type VideoLink = {
+  id: string;
+  title: string;
+  url: string;
+  embedUrl?: string;
+  description?: string;
+  publishedAt?: string;
+  thumbnail?: string;
+  featured?: boolean;
+};
