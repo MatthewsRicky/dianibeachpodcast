@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 import { Container } from "@/components/layout/Container";
 import { getBlogPostBySlug } from "@/lib/data/blogPosts";
+import { ArticleContent } from "@/components/blog/ArticleContent";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -50,6 +51,9 @@ async function JournalArticleContent({ params }: PageProps) {
           <h1 className="mt-6 text-4xl font-bold leading-tight tracking-tight text-ocean sm:text-6xl">
             {post.title}
           </h1>
+          <h2 className="mt-5 text-md font-normal leading-tight tracking-tight text-ocean sm:text-lg">
+            {post.subtitle}
+          </h2>
 
           <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-muted">
             <span>By {post.author}</span>
@@ -67,7 +71,7 @@ async function JournalArticleContent({ params }: PageProps) {
               <img
                 src={post.image}
                 alt={post.title}
-                className="max-h-[560px] w-full object-cover"
+                className="max-h-[560px] w-full object-cover shadow-md shadow-coral"
               />
             </div>
           ) : (
@@ -80,18 +84,9 @@ async function JournalArticleContent({ params }: PageProps) {
 
           <p className="mt-8 text-xl leading-9 text-ocean">{post.excerpt}</p>
 
-          <div className="mt-8 space-y-6">
-            {post.content.map((paragraph, index) => (
-              <p
-                key={`${post.id}-${index}`}
-                className="text-base leading-8 text-ink/80"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <ArticleContent blocks={post.content} />
 
-          <div className="mt-10 rounded-2xl border border-border bg-white p-6 sm:p-8">
+          {/* <div className="mt-10 rounded-2xl border border-border bg-white p-6 sm:p-8">
             <p className="text-sm leading-7 text-muted">
               This is an introductory local-data version of the story. Visit the
               original article for the source publication and its original
@@ -106,7 +101,7 @@ async function JournalArticleContent({ params }: PageProps) {
               Read the original article
               <ArrowUpRight size={16} />
             </a>
-          </div>
+          </div> */}
         </article>
       </Container>
     </main>
