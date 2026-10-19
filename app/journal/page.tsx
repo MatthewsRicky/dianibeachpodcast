@@ -99,64 +99,56 @@ export default function JournalPage() {
         {filteredPosts.length > 0 ? (
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredPosts.map((post) => (
-              <article
-                key={post.id}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                {post.image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={post.image}
-                    alt=""
-                    className="aspect-[16/10] w-full object-cover"
-                  />
-                ) : (
-                  <div className="coastal-gradient flex aspect-[16/10] items-end p-5">
-                    <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-                      Diani Beach Journal
+              <Link key={post.id} href={`/journal/${post.slug}`}>
+                <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all hover:-translate-y-1 hover:shadow-lg">
+                  {post.image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={post.image}
+                      alt=""
+                      className="aspect-[16/10] w-full object-cover"
+                    />
+                  ) : (
+                    <div className="coastal-gradient flex aspect-[16/10] items-end p-5">
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-white/80">
+                        Diani Beach Journal
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex flex-wrap gap-2">
+                      {post.categories.slice(0, 2).map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full bg-seafoam-light px-3 py-1 text-xs font-semibold text-emerald"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-4 text-xs text-muted">
+                      {new Date(
+                        `${post.publishedAt}T12:00:00`,
+                      ).toLocaleDateString("en-KE", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </p>
+                    <h2 className="mt-3 text-xl font-bold leading-snug text-ocean">
+                      {post.title}
+                    </h2>
+                    <p className="mt-3 flex-1 text-sm leading-7 text-muted">
+                      {post.excerpt}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-teal transition-all group-hover:translate-x-1 group-hover:text-coral">
+                      Read story
+                      <ArrowUpRight size={16} />
                     </span>
                   </div>
-                )}
-
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {post.categories.slice(0, 2).map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full bg-seafoam-light px-3 py-1 text-xs font-semibold text-emerald"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <p className="mt-4 text-xs text-muted">
-                    {new Date(
-                      `${post.publishedAt}T12:00:00`,
-                    ).toLocaleDateString("en-KE", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </p>
-
-                  <h2 className="mt-3 text-xl font-bold leading-snug text-ocean">
-                    {post.title}
-                  </h2>
-
-                  <p className="mt-3 flex-1 text-sm leading-7 text-muted">
-                    {post.excerpt}
-                  </p>
-
-                  <Link
-                    href={`/journal/${post.slug}`}
-                    className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-teal transition-colors hover:text-coral"
-                  >
-                    Read story
-                    <ArrowUpRight size={16} />
-                  </Link>
-                </div>
-              </article>
+                </article>
+              </Link>
             ))}
           </div>
         ) : (
