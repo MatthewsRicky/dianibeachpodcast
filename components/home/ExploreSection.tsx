@@ -7,7 +7,7 @@ const categories = [
   {
     title: "Food & Drink",
     description: "Restaurants, cafés, bars and flavours worth discovering.",
-    image: "",
+    image: "/images/blog/funkymonkey/fm17.webp",
     href: "/explore?category=food-drink",
     size: "large",
   },
@@ -21,7 +21,7 @@ const categories = [
   {
     title: "Places & Experiences",
     description: "Find memorable things to see and do along the coast.",
-    image: "",
+    image: "/images/blog/places/diani-beach.webp",
     href: "/explore?category=experiences",
     size: "medium",
   },

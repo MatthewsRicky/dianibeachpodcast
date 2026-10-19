@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "./Container";
 
 const navigation = [
-  { href: "/journal", label: "blog" },
+  { href: "/journal", label: "Journal" },
   { href: "/podcast", label: "Listen & Watch" },
   { href: "/explore", label: "Explore Diani" },
   { href: "/directory", label: "Directory" },
