@@ -7,13 +7,13 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "./Container";
 
 const navigation = [
+  { href: "/journal", label: "blog" },
   { href: "/podcast", label: "Listen & Watch" },
   { href: "/explore", label: "Explore Diani" },
   { href: "/directory", label: "Directory" },
   { href: "/classifieds", label: "Classifieds" },
   { href: "/events", label: "Events" },
   { href: "/mylivinglist", label: "My Living List" },
-  { href: "/journal", label: "Journal" },
 ];
 
 export function Header() {
