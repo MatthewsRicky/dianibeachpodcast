@@ -66,7 +66,7 @@ async function EpisodeDetailContent({ params }: PageProps) {
             <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-ocean sm:text-5xl">
               {episode.title}
             </h1>
-
+    
             {episode.publishedAt && (
               <p className="mt-4 text-sm text-muted">
                 {new Date(episode.publishedAt).toLocaleDateString("en-KE", {
