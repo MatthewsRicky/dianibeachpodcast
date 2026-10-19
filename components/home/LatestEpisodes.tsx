@@ -1,30 +1,25 @@
-import { episodes } from "@/lib/content";
+import { getLatestBlogPosts } from "@/lib/data/blogPosts";
 import { Container } from "@/components/layout/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { EpisodeCard } from "@/components/podcast/EpisodeCard";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
 
 export function LatestEpisodes() {
-  const latestEpisodes = [...episodes]
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-    )
-    .slice(0, 3);
+  const latestPosts = getLatestBlogPosts(4);
 
   return (
     <section id="latest" className="bg-sand py-20 sm:py-28">
       <Container>
         <SectionHeading
-          eyebrow="Listen & watch"
-          title="Conversations worth having."
-          description="Meet the people, hear the stories and discover the ideas shaping life on the South Coast."
-          href="/podcast"
-          linkLabel="All episodes"
+          eyebrow="From the journal"
+          title="Stories worth discovering."
+          description="Explore the people, places, food, music and experiences shaping life on the South Coast."
+          href="/journal"
+          linkLabel="All stories"
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {latestEpisodes.map((episode) => (
-            <EpisodeCard key={episode.id} episode={episode} />
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {latestPosts.map((post) => (
+            <BlogPostCard key={post.id} post={post} />
           ))}
         </div>
       </Container>

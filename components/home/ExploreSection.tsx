@@ -6,30 +6,24 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 const categories = [
   {
     title: "Food & Drink",
-    description: "Restaurants, local flavours and places to gather.",
-    href: "/explore?category=food",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85",
-    icon: Utensils,
-    size: "lg:col-span-2",
+    description: "Restaurants, cafés, bars and flavours worth discovering.",
+    image: "",
+    href: "/explore?category=food-drink",
+    size: "large",
   },
   {
     title: "Coastal Living",
-    description: "Culture, community and everyday life.",
-    href: "/explore?category=culture",
-    image:
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85",
-    icon: Waves,
-    size: "",
+    description: "The people, places and rhythms of life by the ocean.",
+    image: "",
+    href: "/explore?category=coastal-living",
+    size: "medium",
   },
   {
     title: "Places & Experiences",
-    description: "Find your next South Coast adventure.",
+    description: "Find memorable things to see and do along the coast.",
+    image: "",
     href: "/explore?category=experiences",
-    image:
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=85",
-    icon: Compass,
-    size: "",
+    size: "medium",
   },
 ];
 
@@ -47,7 +41,7 @@ export function ExploreSection() {
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {categories.map((category) => {
-            const Icon = category.icon;
+            //const Icon = category.icon;
 
             return (
               <Link
@@ -57,15 +51,17 @@ export function ExploreSection() {
               >
                 <div
                   className="absolute inset-0 -z-20 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                  style={{
-                    backgroundImage: `url("${category.image}")`,
-                  }}
+                  style={
+                    category.image
+                      ? { backgroundImage: `url("${category.image}")` }
+                      : undefined
+                  }
                 />
 
                 <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ocean-deep/90 via-ocean-deep/20 to-black/10" />
 
                 <div className="mb-auto flex size-11 items-center justify-center rounded-full border border-white/40 bg-white/10 backdrop-blur-sm">
-                  <Icon size={20} />
+                  {/* <Icon size={20} /> */}
                 </div>
 
                 <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
