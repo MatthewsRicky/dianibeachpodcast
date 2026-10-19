@@ -10,7 +10,7 @@ import { EpisodeCard } from "@/components/podcast/EpisodeCard";
 export const metadata: Metadata = {
   title: "Listen & Watch | Diani Beach Podcast",
   description:
-    "Explore podcast conversations, videos, people and stories from Diani Beach and Kenya's South Coast.",
+    "Explore podcast conversations, videos, people and stories from Diani Beach and Kenya's South Coast and Beyond.",
 };
 
 export default function PodcastPage() {
