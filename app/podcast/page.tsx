@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, Play } from "lucide-react";
 
-import { episodes } from "@/lib/content";
 import { videoChannel, videos } from "@/lib/data/videos";
 import { Container } from "@/components/layout/Container";
 import { EditorialPageHero } from "@/components/ui/EditorialPageHero";
@@ -14,10 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function PodcastPage() {
-  const sortedEpisodes = [...episodes].sort(
-    (a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
+ 
 
   return (
     <main className="min-h-screen pb-16">
@@ -47,10 +43,10 @@ export default function PodcastPage() {
             </p>
           </div>
 
-          {sortedEpisodes.length > 0 ? (
+          {videos.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {sortedEpisodes.map((episode) => (
-                <EpisodeCard key={episode.id} episode={episode} />
+              {videos.slice(0, 4).map((episode) => (
+                <EpisodeCard key={episode.id} episode={episode}  />
               ))}
             </div>
           ) : (

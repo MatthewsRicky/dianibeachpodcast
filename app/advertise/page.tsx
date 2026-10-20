@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, Megaphone, Store, Handshake } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { EditorialPageHero } from "@/components/ui/EditorialPageHero";
+import ContactForm from "@/components/contact/ContactForm";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Advertise With Us | Diani Beach Podcast",
@@ -44,7 +46,7 @@ export default function AdvertisePage() {
         tone="ocean"
       >
         <Link
-          href="mailto:hello@dianibeachpodcast.com?subject=Advertising%20enquiry"
+          href="/contact?type=general"
           className="inline-flex items-center gap-3 rounded-full bg-coral px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-sunset-pink"
         >
           Start a conversation <ArrowRight size={17} />
@@ -99,8 +101,12 @@ export default function AdvertisePage() {
               supporting a local initiative, start with a conversation. A proper
               enquiry form and campaign details can be connected later.
             </p>
+            <Suspense>
+              <ContactForm />
+            </Suspense>
+
             <a
-              href="mailto:hello@dianibeachpodcast.com?subject=Partnership%20enquiry"
+              href="/contact?type=advertising"
               className="mt-5 inline-flex items-center gap-2 font-semibold text-emerald hover:text-teal"
             >
               Send an enquiry <ArrowRight size={16} />

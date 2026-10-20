@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ArrowUpRight, Compass, Utensils, Waves, Leaf } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { EditorialPageHero } from "@/components/ui/EditorialPageHero";
@@ -67,13 +68,26 @@ function getExplorePosts(category?: string) {
   );
 }
 
-export default async function ExplorePage({
+export default function ExplorePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  return (
+    <Suspense fallback={<ExploreLoading />}>
+      <ExplorePageContent searchParams={searchParams} />
+    </Suspense>
+  );
+}
+
+async function ExplorePageContent({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
   const { category } = await searchParams;
-  const posts = getExplorePosts(category); {
+  const posts = getExplorePosts(category);
+
   return (
     <>
       <EditorialPageHero
@@ -269,4 +283,18 @@ export default async function ExplorePage({
     </>
   );
 }
+
+function ExploreLoading() {
+  return (
+    <main className="min-h-[60vh] px-4 py-12 sm:px-6 lg:px-8">
+      <div className="animate-pulse space-y-8">
+        <div className="h-24 rounded-2xl bg-ocean-mist" />
+        <div className="grid gap-6 lg:grid-cols-3">
+          {[0, 1, 2].map((item) => (
+            <div key={item} className="h-72 rounded-2xl bg-ocean-mist" />
+          ))}
+        </div>
+      </div>
+    </main>
+  );
 }

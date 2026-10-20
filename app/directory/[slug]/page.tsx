@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ArrowLeft, ArrowUpRight, MapPin } from "lucide-react";
 import { businesses, getBusinessBySlug } from "@/lib/content";
 import { Container } from "@/components/layout/Container";
@@ -28,7 +29,15 @@ export async function generateMetadata({
     : { title: "Business not found" };
 }
 
-export default async function BusinessDetailPage({ params }: PageProps) {
+export default function BusinessDetailPage({ params }: PageProps) {
+  return (
+    <Suspense fallback={<BusinessLoading />}>
+      <BusinessDetailContent params={params} />
+    </Suspense>
+  );
+}
+
+async function BusinessDetailContent({ params }: PageProps) {
   const { slug } = await params;
   const business = getBusinessBySlug(slug);
 
@@ -126,5 +135,17 @@ export default async function BusinessDetailPage({ params }: PageProps) {
         </Container>
       </section>
     </>
+  );
+}
+
+function BusinessLoading() {
+  return (
+    <main className="min-h-[65vh] px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl animate-pulse space-y-8">
+        <div className="h-4 w-28 rounded bg-ocean-mist" />
+        <div className="h-12 w-3/4 rounded bg-ocean-mist" />
+        <div className="h-24 rounded-2xl bg-ocean-mist" />
+      </div>
+    </main>
   );
 }
