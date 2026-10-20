@@ -8,12 +8,12 @@ import { Container } from "./Container";
 
 const navigation = [
   { href: "/journal", label: "Journal" },
+  { href: "/mylivinglist", label: "My Living List" },
   { href: "/podcast", label: "Listen & Watch" },
+  { href: "/events", label: "Events" },
   { href: "/explore", label: "Explore Diani" },
   { href: "/directory", label: "Directory" },
   { href: "/classifieds", label: "Classifieds" },
-  { href: "/events", label: "Events" },
-  { href: "/mylivinglist", label: "My Living List" },
 ];
 
 export function Header() {
